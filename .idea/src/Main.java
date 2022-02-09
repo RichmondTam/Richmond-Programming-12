@@ -5,10 +5,10 @@ public class Main {
         String q1 = "1+1?\n"
                 + "(a)2 (b)4";
         String q2 ="2+2?\n"
-                +"(a)4 (b)6";
+                +"(a)6 (b)4";
         Question[] questions = {
                 new Question(q1, "a"),
-                new Question(q2,"a" )
+                new Question(q2,"b" )
         };
         runTest(questions);
 
