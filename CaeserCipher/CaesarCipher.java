@@ -21,7 +21,7 @@ public class CaesarCipher {
         String encryptedText = "";
         for(int i=0;i<Text.length();i++){
             char letter= Text.charAt(i);
-            int shift=(map.get(letter)+key);
+            int shift=(map.get(letter)+key)%26;
             encryptedText+= letters[shift];
         }return encryptedText;
     }
@@ -29,7 +29,7 @@ public class CaesarCipher {
         String decryptedText = "";
         for(int i=0;i<Text.length();i++){
             char letter= Text.charAt(i);
-            int shift=(map.get(letter)-key);
+            int shift=(map.get(letter)-key)%26;
             if(shift<0){
                 shift+=26;
             }
