@@ -5,9 +5,10 @@ import java.util.HashMap;
 
 
 public class CaesarCipher {
-    final static char letters[]={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+    public char letters[]={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
     HashMap<Character, Integer> map;
 
+    //screate Map
     public CaesarCipher(){
         map= new HashMap<>();
         for(int i=0;i<25;i++){
@@ -16,7 +17,7 @@ public class CaesarCipher {
     }
 
 
-
+    //shift letters from a to z
     public String encrypt(String Text,int key){
         String encryptedText = "";
         for(int i=0;i<Text.length();i++){
@@ -25,6 +26,8 @@ public class CaesarCipher {
             encryptedText+= letters[shift];
         }return encryptedText;
     }
+    
+    //shift letters from z to a
     public String decrypt(String Text,int key){
         String decryptedText = "";
         for(int i=0;i<Text.length();i++){
