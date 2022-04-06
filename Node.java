@@ -1,5 +1,3 @@
-package com.zaremba.graphs;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +5,8 @@ public class Node {
     private int key;
     private List<Integer> nodes;
     private boolean visited;
+
+
 
     public int getKey() {
         return key;

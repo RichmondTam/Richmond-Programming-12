@@ -1,24 +1,44 @@
-package com.zaremba.graphs;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static ArrayList<Node> graph;
+    public static int key;
+    public static LinkedList<Integer> nodes;
+
+
     public static void main(String[] args) throws FileNotFoundException {
         setupTree();
-        BFS();
+        BFS(1);
     }
 
-    private static void BFS() {
-        //Your code here.  Feel free to modify signature or add helper functions.
+    private static void BFS(int s) {
+        boolean visited[] = new boolean[key];
+        LinkedList<Integer> queue= new LinkedList<>();
+        visited[s]=true;
+        queue.add(s);
+        while(queue.size()!=0){
+            s=queue.poll();
+            System.out.println(s+" ");
+            Iterator<Integer> i = nodes.listIterator();
+            while (i.hasNext())
+            {
+                int n = i.next();
+                if (!visited[n])
+                {
+                    visited[n] = true;
+                    queue.add(n);
+                }
+            }
+        }
+
     }
 
     private static void setupTree() throws FileNotFoundException {
         graph = new ArrayList<>();
-        Scanner scan = new Scanner(new File("tree.txt"));
+        Scanner scan = new Scanner(new File("C:\\Users\\2474710\\Downloads\\Module3.3Graphs\\Module3.3Graphs\\tree.txt"));
         while(scan.hasNext()){
             String line = scan.nextLine();
             parseLine(line);
@@ -34,4 +54,5 @@ public class Main {
         }
         graph.add(new Node(key, points));
     }
+
 }
