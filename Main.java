@@ -16,24 +16,24 @@ public class Main {
         BFS(1);
     }
 
-    private static void BFS(int s) {
+    private static void BFS(int x) {
 
         LinkedList<Integer> queue= new LinkedList<>();
-        boolean visited;
+        boolean visited;                                
         visited =true;
-        queue.add(s);
+        queue.add(x);
 
         while(queue.size()!=0){
             s=queue.poll();
-            System.out.println(s+" ");
+            System.out.println(x+" ");
             Iterator<Node> i = graph.listIterator();
             while (i.hasNext())
             {
                 Node n = i.next();
                 if (!visited)
                 {
-                    visited = true;
-                    queue.add(n.getKey());
+                    visited = true;             //change non-visited to visited
+                    queue.add(n.getKey());      //add the number to the queue
                 }
             }
         }
