@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -8,6 +7,9 @@ public class Main {
     public static int key;
     public static LinkedList<Integer> nodes;
 
+    public static ArrayList<Integer> points;
+
+
 
     public static void main(String[] args) throws FileNotFoundException {
         setupTree();
@@ -15,21 +17,23 @@ public class Main {
     }
 
     private static void BFS(int s) {
-        boolean visited[] = new boolean[key];
+
         LinkedList<Integer> queue= new LinkedList<>();
-        visited[s]=true;
+        boolean visited;
+        visited =true;
         queue.add(s);
+
         while(queue.size()!=0){
             s=queue.poll();
             System.out.println(s+" ");
-            Iterator<Integer> i = nodes.listIterator();
+            Iterator<Node> i = graph.listIterator();
             while (i.hasNext())
             {
-                int n = i.next();
-                if (!visited[n])
+                Node n = i.next();
+                if (!visited)
                 {
-                    visited[n] = true;
-                    queue.add(n);
+                    visited = true;
+                    queue.add(n.getKey());
                 }
             }
         }
@@ -38,7 +42,7 @@ public class Main {
 
     private static void setupTree() throws FileNotFoundException {
         graph = new ArrayList<>();
-        Scanner scan = new Scanner(new File("C:\\Users\\2474710\\Downloads\\Module3.3Graphs\\Module3.3Graphs\\tree.txt"));
+        Scanner scan = new Scanner(new File("/Users/richmond/Downloads/Module3.3Graphs/tree.txt"));
         while(scan.hasNext()){
             String line = scan.nextLine();
             parseLine(line);
@@ -48,11 +52,14 @@ public class Main {
     private static void parseLine(String line) {
         String[] keys = line.split(" ");
         int key = Integer.parseInt(keys[0]);
-        ArrayList<Integer> points = new ArrayList<>();
+        points = new ArrayList<>();
         for(int i = 1; i < keys.length;i++){
             points.add(Integer.parseInt(keys[i]));
         }
         graph.add(new Node(key, points));
     }
+
+
+
 
 }
