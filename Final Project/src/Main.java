@@ -6,7 +6,7 @@ public class Main {
         Random random = new Random();
         int num = random.nextInt(2)+1;
         System.out.println("""
-                Enter your move with coordinates. Your input should be two integers separated by a space.
+                Enter your move with XY coordinates. Your input should be two integers separated by a space.
                 You are X and computer is O""");
         Com.bd.printBoard();
         for (int i = 0; i < 5; i += 2) {
